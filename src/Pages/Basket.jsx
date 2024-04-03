@@ -11,15 +11,15 @@ const Basket = () => {
   console.log(basketList)
   return (
     <Container>
-      <h1 className='text-[20px] md:text-[32px] font-[700] my-5'>Sizdiń sebetińiz</h1>
-      <div className='flex gap-5 w-full items-start'>
+      <h1 className='text-[20px] md:text-[32px] font-[700] my-5'>Sebet</h1>
+      <div className='flex flex-col lg:flex-row gap-5 w-full items-start'>
         {basketProducts.length > 0 ?
-          <div className='border flex flex-col rounded-[20px] px-5 shadow-lg w-[70%]'>
+          <div className='border flex flex-col rounded-[20px] px-5 shadow-lg w-full md:w-60%]'>
             {basketProducts.map(item => (
               <ProductCardInBasket key={item.id} item={item} />
             ))}
           </div>
-          : <div className='w-[70%] flex items-end justify-center gap-2'>
+          : <div className='w-full flex items-center justify-center h-[200px] gap-2 border rounded-[20px] shadow-lg'>
             <BsCart3 className='text-[32px] text-gray-500' />
             <h1 className='text-[18px] text-center text-gray-500 font-[600]'>Sebet bos!</h1>
           </div>}

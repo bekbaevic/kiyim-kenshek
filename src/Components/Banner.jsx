@@ -1,5 +1,4 @@
-import React from 'react'
-import BannerImage from "../Images/BannerImage.png"
+
 const Banner = () => {
     return (
         <div className='w-full py-20 bg-gray-100 flex items-center justify-between px-16'>

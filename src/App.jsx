@@ -7,6 +7,8 @@ import Product from "./Pages/Product";
 import Favorite from "./Pages/Favorite"
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout/Layout";
+import Registration from "./Pages/Registration";
+import Profile from "./Pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -33,21 +35,27 @@ const router = createBrowserRouter([
         path: "basket",
         element: <Basket />
       },
-      {
-        path: "authorization",
-        element: <Authorization />
-      },
+
       {
         path: "favourite",
         element: <Favorite />
       }]
   },
+  {
+    path: "authorization",
+    element: <Authorization />
+  },
+  {
+    path: "registration",
+    element: <Registration />
+  },
+  {
+    path: "profile",
+    element: <Profile />
+  },
 ])
 
 function App() {
-
-
-
   return (
     <div>
       <RouterProvider router={router} >

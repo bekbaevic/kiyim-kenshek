@@ -17,21 +17,19 @@ const Footer = () => {
             </p>
             <div className='flex items-center text-[24px] gap-2 '>
               {SocialNetworks.map(item => (
-                <a target='_blank' href={item.url} className='hover:scale-[120%] transition-all duration-300 hover:text-indigo-600'>{item.icon}</a>
+                <a key={item.url} target='_blank' href={item.url} className='hover:scale-[120%] transition-all duration-300 hover:text-indigo-600'>{item.icon}</a>
               ))}
             </div>
           </div>
-          <div className='flex gap-10 w-full justify-center md:justify-start'>
-            <div className='flex gap-10 flex-col sm:flex-row'>
-              {FooterItems.map(item => (
-                <ul className='w-[100%]'>
-                  <h1 className='font-[700] mb-2'>{item.header}</h1>
-                  {item.body.map(item => (
-                    <li className='text-[14px] mb-2 text-gray-600 hover:text-black cursor-pointer'>{item}</li>
-                  ))}
-                </ul>
-              ))}
-            </div>
+          <div className='grid grid-cols-2 lg:grid-cols-4 gap-5 gap-x-10'>
+            {FooterItems.map(item => (
+              <ul key={item.header} className=''>
+                <h1 className='font-[700] mb-2'>{item.header}</h1>
+                {item.body.map(item => (
+                  <li key={item} className='text-[14px] mb-2 text-gray-600 hover:text-black cursor-pointer'>{item}</li>
+                ))}
+              </ul>
+            ))}
           </div>
         </div>
         <div>

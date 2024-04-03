@@ -7,17 +7,19 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useSelector } from 'react-redux';
+import { Button } from '@mantine/core';
 
 
-const Header = () => {
+const Header = ({ open, close, opened }) => {
     const { basketProducts } = useSelector(state => state.basket)
-    console.log(basketProducts.length)
+    const { user } = useSelector(state => state.user)
+
     return (
         <div className='z-20 flex shadow-md items-center justify-between py-4 gap-5 sticky top-0 bg-white px-[5%]'>
             <div className='flex items-center gap-5'>
-                <button>
-                    <GiHamburgerMenu className='text-[24px] md:hidden cursor-pointer' />
-                </button>
+                <Button onClick={open}>
+                    <GiHamburgerMenu className='text-[24px] md:hidden' />
+                </Button>
                 <NavLink to={'/'}><Logotip /></NavLink>
             </div>
             <ul className='flex items-center gap-1 md:gap-3'>
@@ -38,7 +40,12 @@ const Header = () => {
                         <span className='absolute top-[-5px] right-[-5px] bg-indigo-600 font-[500] font-sans text-white w-[16px] h-[16px] text-[12px] rounded-full flex justify-center items-center'>{basketProducts.length}</span>
                     </NavLink>
                     <div className='cursor-pointer'>
-                        <FaCircleUser className='text-[24px]' />
+                        {user ?
+                            <NavLink to={"/profile"}>
+                                <FaCircleUser className='text-[24px]' />
+                            </NavLink> :
+                            <NavLink to={"/authorization"} className="text-[14px] border w-[30px] h-[30px] p-2 font-[500] border-black rounded-full px-4 hover:bg-black hover:text-white transition-all duration-200">Kiriw</NavLink>
+                        }
                     </div>
                 </div>
             </div>

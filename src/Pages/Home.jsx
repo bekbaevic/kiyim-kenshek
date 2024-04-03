@@ -6,9 +6,11 @@ import { getProducts } from '../Requests/Requests'
 import { useQuery } from '@tanstack/react-query'
 import Review from '../Components/Review'
 import { NavLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Home = () => {
-
+  const { user } = useSelector(state => state.user)
+  const dispatch = useDispatch()
   const { data, isError, isLoading, error } = useQuery({
     queryKey: ["products"],
     queryFn: () => getProducts(),
@@ -18,7 +20,6 @@ const Home = () => {
     <div>
       <Banner />
       <Container>
-
         {/* NEW PRODUCTS */}
         <div className='flex flex-col'>
           <h1 className='text-[20px] md:text-[32px] font-[700] text-center my-10'>JAŃA TOVARLAR</h1>
@@ -29,7 +30,7 @@ const Home = () => {
                   <Card key={item.id} item={item} />
                 )) :
                 [1, 2, 3, 4].map(item => (
-                  <div className='bg-[#f1f1f1] flex flex-col justify-between p-6 rounded-md min-w-[300px] max-w-[300px]'>
+                  <div key={item} className='bg-[#f1f1f1] flex flex-col justify-between p-6 rounded-md min-w-[300px] max-w-[300px]'>
                     <div>
                       <div className='w-[250px] h-[250px] flex items-center bg-white justify-center '>
                         <img className='rounded-md h-full object-cover' />
@@ -46,7 +47,7 @@ const Home = () => {
             }
           </div>
           <div className='w-full justify-center flex'>
-            <NavLink to={"products"} className='mt-7  py-3 font-[600] px-20 border w-fit rounded-full hover:bg-black hover:text-white active:scale-95 transition-all duration-300'>Tolıq kóriw</NavLink>
+            <NavLink to={"products"} className='mt-5  py-3 font-[600] px-20 border w-fit rounded-full hover:bg-black hover:text-white active:scale-95 transition-all duration-300'>Tolıq kóriw</NavLink>
           </div>
         </div>
 
@@ -56,11 +57,11 @@ const Home = () => {
           <div className='flex gap-5 overflow-x-auto cards overflow-y-hidden p-5'>
             {
               data ?
-                data.slice(6, 12).map(item => (
+                data.filter(item => item.rating['rate'] > 4).map(item => (
                   <Card key={item.id} item={item} />
                 )) :
                 [1, 2, 3, 4].map(item => (
-                  <div className='bg-[#f1f1f1] flex flex-col justify-between p-6 rounded-md min-w-[300px] max-w-[300px]'>
+                  <div key={item} className='bg-[#f1f1f1] flex flex-col justify-between p-6 rounded-md min-w-[300px] max-w-[300px]'>
                     <div>
                       <div className='w-[250px] h-[250px] flex items-center bg-white justify-center '>
                         <img className='rounded-md h-full object-cover' />
@@ -77,7 +78,7 @@ const Home = () => {
             }
           </div>
           <div className='w-full justify-center flex'>
-            <NavLink to={"products"} className='mt-7  py-3 font-[600] px-20 border w-fit rounded-full hover:bg-black hover:text-white active:scale-95 transition-all duration-300'>Tolıq kóriw</NavLink>
+            <NavLink to={"products"} className='mt-5  py-3 font-[600] px-20 border w-fit rounded-full hover:bg-black hover:text-white active:scale-95 transition-all duration-300'>Tolıq kóriw</NavLink>
           </div>
         </div>
 

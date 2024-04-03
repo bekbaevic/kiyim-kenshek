@@ -18,7 +18,7 @@ const AllProducts = () => {
             <Card key={item.id} item={item} />
           )) :
           [1, 2, 3, 4].map(item => (
-            <div className='bg-[#f1f1f1] flex flex-col justify-between p-6 rounded-md min-w-[300px] max-w-[300px]'>
+            <div key={item} className='bg-[#f1f1f1] flex flex-col justify-between p-6 rounded-md min-w-[300px] max-w-[300px]'>
               <div>
                 <div className='w-[250px] h-[250px] flex items-center bg-white justify-center '>
                   <img className='rounded-md h-full object-cover' />
